@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('post_page', 'PostController');
-Route::put('post_page', 'PostController@store');
+//testar se é o posts ou o nome da pasta//
+Route::group(['prefix' => 'postagem'], function() {
+    Route::get('', 'PostController@index')->name('posts_info.index');
+    Route::get('{id}', 'PostController@show')->name('post_info.show')->where('id', '[0-9]+');
+});
