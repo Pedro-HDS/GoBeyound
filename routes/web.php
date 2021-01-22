@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 //testar se é o posts ou o nome da pasta//
-Route::group(['prefix' => 'postagem'], function() {
+Route::group(['prefix' => 'post'], function() {
     Route::get('', 'PostController@index')->name('posts_info.index');
     Route::get('{id}', 'PostController@show')->name('post_info.show')->where('id', '[0-9]+');
+});
+Route::group(['prefix' => 'login'], function() {
+    Route::get('', 'LoginController@index')->name('login.index');
 });
